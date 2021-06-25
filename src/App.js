@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
 
+import firebase, {FirebaseContext} from './firebase';
 
 import Ordenes from './componets/paginas/Ordenes';
 import Menu from './componets/paginas/Menu';
@@ -9,7 +10,12 @@ import Sidebar from "./componets/ui/Sidebar";
 
 function App() {
   return (
-    <div className="md:flex min-h-screen" >
+    <FirebaseContext.Provider
+      value={{
+        firebase
+      }}
+    >
+      <div className="md:flex min-h-screen" >
       <Sidebar/>
 
       <div className="md:w3/5 xl:w-2/5 p-6 " >
@@ -22,6 +28,7 @@ function App() {
       </div>
       
     </div>
+    </FirebaseContext.Provider>
   );
 }
 
